@@ -1,1 +1,1838 @@
+<!doctype html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FCMB Pensions — The Smart Choice For A Happy Retirement</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            purple: '#5c068c',
+            obsidian: '#2e0b56',
+            gold: '#ffb81c',
+            coral: '#ff859f',
+            violet: '#9c10ff',
+            cyan: '#60dfe7',
+            tangerine: '#ff947b',
+            teal: '#00a6d3',
+            jade: '#3de896',
+            'purple-light': '#f3e8ff',
+            'gold-light': '#fff8e1',
+          },
+          fontFamily: {
+            playfair: ['Playfair Display', 'Georgia', 'serif'],
+            jakarta: ['Plus Jakarta Sans', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; scroll-behavior: smooth; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; color: #2e0b56; background: #fff; overflow-x: hidden; }
 
+    /* ===== GRADIENTS ===== */
+    .hero-bg {
+      background:
+        radial-gradient(ellipse at 15% 85%, rgba(96,223,231,0.22) 0%, transparent 48%),
+        radial-gradient(ellipse at 85% 15%, rgba(255,148,123,0.18) 0%, transparent 45%),
+        radial-gradient(ellipse at 55% 55%, rgba(156,16,255,0.10) 0%, transparent 55%),
+        #fafafa;
+    }
+    .dark-bg {
+      background:
+        radial-gradient(ellipse at 30% 70%, rgba(96,223,231,0.15) 0%, transparent 45%),
+        radial-gradient(ellipse at 75% 25%, rgba(255,184,28,0.10) 0%, transparent 45%),
+        #2e0b56;
+    }
+    .light-purple-bg {
+      background:
+        radial-gradient(ellipse at 20% 80%, rgba(92,6,140,0.06) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(96,223,231,0.08) 0%, transparent 50%),
+        #f8f4fc;
+    }
+
+    /* ===== TOP BAR ===== */
+    #top-bar {
+      background: #5c068c;
+      position: relative;
+      z-index: 60;
+    }
+    .top-bar-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 7px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .top-bar-links { display: flex; align-items: center; gap: 0; flex-wrap: wrap; }
+    .top-bar-links a {
+      color: rgba(255,255,255,0.80);
+      font-size: 11px;
+      font-weight: 500;
+      text-decoration: none;
+      padding: 3px 10px;
+      border-right: 1px solid rgba(255,255,255,0.2);
+      transition: color 0.2s;
+      white-space: nowrap;
+    }
+    .top-bar-links a:first-child { padding-left: 0; }
+    .top-bar-links a:last-child { border-right: none; }
+    .top-bar-links a:hover { color: #ffb81c; }
+    .top-bar-links a.highlight { color: #ffb81c; font-weight: 700; }
+    .social-links { display: flex; align-items: center; gap: 12px; }
+    .social-links a { color: rgba(255,255,255,0.60); transition: color 0.2s; display: flex; }
+    .social-links a:hover { color: #ffb81c; }
+    .social-links svg { width: 15px; height: 15px; }
+
+    /* FCMB Group dropdown (left side of top bar) */
+    .top-bar-fcmb-group { position: relative; flex-shrink: 0; }
+    .top-bar-fcmb-btn {
+      display: flex; align-items: center; gap: 6px;
+      background: none; border: none; cursor: pointer;
+      color: #ffb81c; font-size: 11px; font-weight: 700;
+      padding: 4px 0; font-family: 'Plus Jakarta Sans', sans-serif;
+      transition: opacity 0.2s;
+    }
+    .top-bar-fcmb-btn:hover { opacity: 0.8; }
+    .top-bar-fcmb-btn svg { width: 10px; height: 10px; transition: transform 0.2s; }
+    .top-bar-fcmb-group:hover .top-bar-fcmb-btn svg,
+    .top-bar-fcmb-group:focus-within .top-bar-fcmb-btn svg { transform: rotate(180deg); }
+    .top-bar-dropdown {
+      position: absolute; top: calc(100% + 6px); left: 0;
+      background: #fff; border-radius: 12px;
+      box-shadow: 0 16px 48px rgba(46,11,86,0.18);
+      min-width: 220px; padding: 8px;
+      opacity: 0; pointer-events: none; transform: translateY(-6px);
+      transition: opacity 0.18s ease, transform 0.18s ease;
+      z-index: 100;
+    }
+    .top-bar-fcmb-group:hover .top-bar-dropdown,
+    .top-bar-fcmb-group:focus-within .top-bar-dropdown { opacity: 1; pointer-events: all; transform: translateY(0); }
+    .top-bar-dropdown a {
+      display: block; font-size: 12.5px; font-weight: 500; color: rgba(46,11,86,0.75);
+      text-decoration: none; padding: 8px 12px; border-radius: 8px;
+      transition: background 0.15s, color 0.15s;
+    }
+    .top-bar-dropdown a:hover { background: rgba(92,6,140,0.06); color: #5c068c; }
+
+    /* Right group of top bar */
+    .top-bar-right { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+
+    /* ===== MAIN NAV ===== */
+    #main-nav {
+      position: sticky;
+      top: 0;
+      left: 0; right: 0;
+      z-index: 55;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(92,6,140,0.10);
+      transition: box-shadow 0.3s ease;
+    }
+    #main-nav.scrolled { box-shadow: 0 4px 24px rgba(46,11,86,0.10); }
+    .nav-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 10px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .logo-wrap { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
+    .logo-img { height: 70px; width: auto; display: block; }
+
+    /* ===== DROPDOWN NAV ===== */
+    .nav-links { display: flex; align-items: center; gap: 2px; }
+    .nav-item { position: relative; }
+    .nav-btn {
+      display: flex; align-items: center; gap: 4px;
+      font-size: 13px; font-weight: 600; color: rgba(46,11,86,0.75);
+      background: none; border: none; cursor: pointer;
+      padding: 8px 10px; border-radius: 8px;
+      transition: color 0.2s, background 0.2s;
+      white-space: nowrap;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      text-decoration: none;
+    }
+    .nav-btn:hover, .nav-btn.active { color: #5c068c; background: rgba(92,6,140,0.06); }
+    .nav-btn svg { width: 12px; height: 12px; transition: transform 0.2s; flex-shrink: 0; }
+    .nav-item:hover .nav-btn svg, .nav-item:focus-within .nav-btn svg { transform: rotate(180deg); }
+
+    .dropdown {
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      background: #fff;
+      border: 1px solid rgba(92,6,140,0.10);
+      border-radius: 14px;
+      box-shadow: 0 16px 48px rgba(46,11,86,0.14);
+      min-width: 220px;
+      padding: 8px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-6px);
+      transition: opacity 0.18s ease, transform 0.18s ease;
+      z-index: 100;
+    }
+    .nav-item:hover .dropdown,
+    .nav-item:focus-within .dropdown { opacity: 1; pointer-events: all; transform: translateY(0); }
+    .dropdown a {
+      display: block;
+      font-size: 12.5px; font-weight: 500; color: rgba(46,11,86,0.75);
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: background 0.15s, color 0.15s;
+    }
+    .dropdown a:hover { background: rgba(92,6,140,0.06); color: #5c068c; }
+    .dropdown-wide { min-width: 520px; display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+    .dropdown-section-title {
+      font-size: 10px; font-weight: 700; color: rgba(92,6,140,0.45);
+      text-transform: uppercase; letter-spacing: 0.8px;
+      padding: 10px 12px 4px;
+    }
+
+    /* Nav CTA */
+    .nav-actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .btn-signin {
+      font-size: 12px; font-weight: 700; color: #5c068c;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .btn-signin:hover { color: #2e0b56; }
+    .btn-primary {
+      background: #ffb81c;
+      color: #2e0b56;
+      font-size: 12px; font-weight: 800;
+      padding: 9px 20px;
+      border-radius: 100px;
+      border: none; cursor: pointer;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      white-space: nowrap;
+      text-decoration: none;
+    }
+    .btn-primary:hover { background: #f5ad00; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(255,184,28,0.35); }
+    .btn-outline {
+      background: transparent;
+      color: #5c068c;
+      font-size: 12px; font-weight: 700;
+      padding: 8px 18px;
+      border-radius: 100px;
+      border: 2px solid rgba(92,6,140,0.25);
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .btn-outline:hover { border-color: #5c068c; color: #5c068c; }
+
+    /* Hamburger */
+    .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+    .hamburger svg { width: 22px; height: 22px; color: #2e0b56; }
+
+    /* ===== HERO ===== */
+    .hero-section {
+      padding: 64px 24px 80px;
+      min-height: 88vh;
+      display: flex; align-items: center;
+    }
+    .hero-inner { max-width: 1280px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .hero-eyebrow { font-size: 11px; font-weight: 700; color: rgba(92,6,140,0.55); text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 18px; }
+    .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(38px, 4.5vw, 58px); line-height: 1.08; font-weight: 800; color: #2e0b56; margin: 0 0 22px; }
+    .hero-title em { font-style: italic; color: #5c068c; }
+    .hero-subtitle { font-size: 17px; line-height: 1.7; color: rgba(46,11,86,0.65); margin: 0 0 36px; max-width: 460px; }
+    .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+    .hero-cta-primary {
+      background: #ffb81c; color: #2e0b56; font-weight: 800; font-size: 14px;
+      padding: 14px 32px; border-radius: 100px; border: none; cursor: pointer;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .hero-cta-primary:hover { background: #f5ad00; transform: translateY(-2px); box-shadow: 0 10px 30px rgba(255,184,28,0.4); }
+    .hero-cta-secondary {
+      background: transparent; color: #2e0b56; font-weight: 700; font-size: 14px;
+      padding: 14px 32px; border-radius: 100px; border: 2px solid rgba(46,11,86,0.20);
+      cursor: pointer; font-family: 'Plus Jakarta Sans', sans-serif;
+      transition: border-color 0.2s, color 0.2s;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .hero-cta-secondary:hover { border-color: #5c068c; color: #5c068c; }
+
+    /* Hero image area */
+    .hero-visual { position: relative; }
+    .hero-img-wrap {
+      border-radius: 24px; overflow: hidden;
+      box-shadow: 0 32px 80px rgba(46,11,86,0.18);
+      aspect-ratio: 4/3;
+      position: relative;
+    }
+    .hero-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .hero-carousel-img {
+      position: absolute; top: 0; left: 0;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+    .hero-carousel-img.active { opacity: 1; }
+    .hero-float-card {
+      position: absolute;
+      background: #fff;
+      border-radius: 16px;
+      padding: 14px 18px;
+      box-shadow: 0 12px 40px rgba(46,11,86,0.15);
+      display: flex; align-items: center; gap: 12px;
+      animation: float 5s ease-in-out infinite;
+    }
+    .hero-float-card.card-1 { bottom: -20px; left: -20px; animation-delay: 0s; }
+    .hero-float-card.card-2 { top: -20px; right: -20px; animation-delay: 2.5s; }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    .float-icon { width: 42px; height: 42px; border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+    .float-icon.gold { background: rgba(255,184,28,0.15); }
+    .float-icon.teal { background: rgba(0,166,211,0.12); }
+    .float-label { font-size: 10px; color: rgba(46,11,86,0.50); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+    .float-value { font-size: 18px; font-weight: 800; color: #2e0b56; line-height: 1.1; }
+
+    /* Hero stats strip */
+    .hero-stats { display: flex; gap: 32px; margin-top: 40px; padding-top: 36px; border-top: 1px solid rgba(46,11,86,0.10); flex-wrap: nowrap; justify-content: space-between; }
+    .hero-stats > div { min-width: 0; }
+    .hero-stat-num { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 800; color: #5c068c; line-height: 1; white-space: nowrap; }
+    .hero-stat-label { font-size: 12px; color: rgba(46,11,86,0.55); font-weight: 500; margin-top: 4px; white-space: nowrap; }
+
+    /* ===== SCROLL TICKER ===== */
+    .ticker-wrap { background: #5c068c; overflow: hidden; padding: 10px 0; }
+    .ticker-track { display: flex; gap: 60px; animation: ticker 22s linear infinite; white-space: nowrap; }
+    .ticker-track:hover { animation-play-state: paused; }
+    @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    .ticker-item { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.80); display: flex; align-items: center; gap: 10px; }
+    .ticker-dot { width: 5px; height: 5px; border-radius: 50%; background: #ffb81c; flex-shrink: 0; }
+
+    /* ===== SECTIONS ===== */
+    section { padding: 80px 24px; }
+    .section-inner { max-width: 1280px; margin: 0 auto; }
+    .section-eyebrow { font-size: 11px; font-weight: 700; color: #00a6d3; text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 14px; }
+    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(28px, 3vw, 44px); font-weight: 800; color: #2e0b56; line-height: 1.15; margin: 0 0 20px; }
+    .section-title em { font-style: italic; color: #5c068c; }
+    .section-body { font-size: 16px; line-height: 1.75; color: rgba(46,11,86,0.65); max-width: 560px; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .four-col { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+
+    /* ===== FEATURE CARDS ===== */
+    .feature-card {
+      background: rgba(92,6,140,0.04);
+      border: 1px solid rgba(92,6,140,0.08);
+      border-radius: 20px;
+      padding: 32px 28px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+    .feature-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(92,6,140,0.10); border-color: rgba(92,6,140,0.15); }
+    .feature-icon {
+      width: 52px; height: 52px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px;
+    }
+    .feature-icon svg { width: 26px; height: 26px; }
+    .feature-title { font-size: 17px; font-weight: 700; color: #2e0b56; margin: 0 0 10px; }
+    .feature-body { font-size: 14px; line-height: 1.7; color: rgba(46,11,86,0.60); margin: 0; }
+
+    /* ===== FUND CARDS ===== */
+    .fund-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 40px; }
+    .fund-card {
+      background: #fff;
+      border: 1px solid rgba(92,6,140,0.10);
+      border-radius: 18px;
+      padding: 24px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .fund-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #5c068c, #9c10ff); }
+    .fund-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(46,11,86,0.10); }
+    .fund-label { font-size: 11px; font-weight: 700; color: #5c068c; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px; }
+    .fund-name { font-size: 18px; font-weight: 800; color: #2e0b56; margin: 0 0 6px; }
+    .fund-desc { font-size: 13px; color: rgba(46,11,86,0.60); margin: 0 0 14px; }
+    .fund-fee { font-size: 12px; color: rgba(46,11,86,0.50); }
+    .fund-fee strong { color: #2e0b56; }
+    .fund-badge {
+      position: absolute; top: 16px; right: 16px;
+      background: rgba(255,184,28,0.15); color: #5c068c;
+      font-size: 10px; font-weight: 700;
+      padding: 3px 8px; border-radius: 100px;
+    }
+
+    /* ===== PLAN CARDS ===== */
+    .plan-card {
+      background: rgba(255,255,255,0.10);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 22px;
+      padding: 32px 28px;
+      transition: border-color 0.25s, transform 0.25s;
+      position: relative;
+    }
+    .plan-card:hover { border-color: rgba(255,184,28,0.40); transform: translateY(-4px); }
+    .plan-card.featured { border-color: rgba(255,184,28,0.50); }
+    .plan-badge {
+      position: absolute; top: -12px; left: 24px;
+      background: #ffb81c; color: #2e0b56;
+      font-size: 10px; font-weight: 800;
+      padding: 4px 12px; border-radius: 100px;
+      text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .plan-tag { font-size: 11px; font-weight: 700; color: #ffb81c; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 8px; }
+    .plan-name { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 800; color: #fff; margin: 0 0 10px; }
+    .plan-desc { font-size: 14px; color: rgba(255,255,255,0.60); line-height: 1.65; margin: 0 0 24px; }
+    .plan-features { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+    .plan-features li { display: flex; align-items: flex-start; gap: 10px; font-size: 13.5px; color: rgba(255,255,255,0.75); }
+    .plan-check { width: 18px; height: 18px; border-radius: 50%; background: rgba(61,232,150,0.20); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+    .plan-check svg { width: 10px; height: 10px; color: #3de896; }
+
+    /* ===== TRUST BADGES ===== */
+    .trust-card { text-align: center; }
+    .trust-icon { width: 64px; height: 64px; border-radius: 18px; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; }
+    .trust-icon svg { width: 30px; height: 30px; }
+    .trust-title { font-size: 15px; font-weight: 700; color: #2e0b56; margin: 0 0 6px; }
+    .trust-body { font-size: 13px; color: rgba(46,11,86,0.55); }
+
+    /* ===== TESTIMONIALS ===== */
+    .testimonial-card {
+      background: #fff;
+      border: 1px solid rgba(92,6,140,0.08);
+      border-radius: 22px;
+      padding: 30px 26px;
+      transition: box-shadow 0.25s, transform 0.25s;
+    }
+    .testimonial-card:hover { box-shadow: 0 16px 40px rgba(92,6,140,0.09); transform: translateY(-4px); }
+    .testimonial-avatar { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; }
+    .testimonial-name { font-size: 15px; font-weight: 700; color: #2e0b56; }
+    .testimonial-role { font-size: 12px; color: rgba(46,11,86,0.50); }
+    .testimonial-text { font-size: 14px; line-height: 1.75; color: rgba(46,11,86,0.70); margin: 14px 0 16px; font-style: italic; }
+    .stars { display: flex; gap: 3px; }
+    .stars svg { width: 14px; height: 14px; fill: #ffb81c; color: #ffb81c; }
+
+    /* ===== DIGITAL SECTION ===== */
+    .app-feature { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 24px; }
+    .app-icon { width: 44px; height: 44px; border-radius: 12px; background: rgba(255,184,28,0.12); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .app-icon svg { width: 22px; height: 22px; color: #ffb81c; }
+    .app-feature-title { font-size: 15px; font-weight: 700; color: #2e0b56; margin: 0 0 4px; }
+    .app-feature-body { font-size: 13.5px; color: rgba(46,11,86,0.58); }
+    .app-dl-btns { display: flex; gap: 12px; margin-top: 30px; flex-wrap: wrap; }
+    .app-dl-btn {
+      background: #2e0b56; color: #fff; font-size: 12.5px; font-weight: 700;
+      padding: 11px 22px; border-radius: 12px; border: none; cursor: pointer;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      display: flex; align-items: center; gap: 8px;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .app-dl-btn:hover { background: #5c068c; transform: translateY(-1px); }
+    .app-dl-btn svg { width: 18px; height: 18px; }
+
+    /* ===== FAQ SECTION ===== */
+    .faq-item { border-bottom: 1px solid rgba(92,6,140,0.10); }
+    .faq-q {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 18px 0; cursor: pointer; gap: 16px;
+      font-size: 15px; font-weight: 600; color: #2e0b56;
+      transition: color 0.2s;
+    }
+    .faq-q:hover { color: #5c068c; }
+    .faq-icon { width: 22px; height: 22px; border-radius: 50%; background: rgba(92,6,140,0.08); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background 0.2s, transform 0.25s; }
+    .faq-icon svg { width: 12px; height: 12px; color: #5c068c; }
+    .faq-item.open .faq-icon { background: #5c068c; transform: rotate(45deg); }
+    .faq-item.open .faq-icon svg { color: #fff; }
+    .faq-a { font-size: 14px; line-height: 1.75; color: rgba(46,11,86,0.65); padding: 0 0 18px; display: none; }
+    .faq-item.open .faq-a { display: block; }
+
+    /* ===== STATS STRIP ===== */
+    .stats-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+    .stat-cell { text-align: center; padding: 40px 20px; border-right: 1px solid rgba(255,255,255,0.12); }
+    .stat-cell:last-child { border-right: none; }
+    .stat-num { font-family: 'Playfair Display', serif; font-size: clamp(32px, 3.5vw, 46px); font-weight: 800; color: #ffb81c; line-height: 1; }
+    .stat-label { font-size: 13px; color: rgba(255,255,255,0.60); margin-top: 8px; font-weight: 500; }
+
+    /* ===== CTA SECTION ===== */
+    .cta-section { background: #5c068c; padding: 80px 24px; text-align: center; }
+    .cta-title { font-family: 'Playfair Display', serif; font-size: clamp(28px, 3.5vw, 46px); font-weight: 800; color: #fff; margin: 0 0 16px; }
+    .cta-body { font-size: 17px; color: rgba(255,255,255,0.65); margin: 0 0 36px; max-width: 460px; margin-left: auto; margin-right: auto; }
+    .cta-btns { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+    .cta-btn-gold { background: #ffb81c; color: #2e0b56; font-weight: 800; font-size: 15px; padding: 15px 38px; border-radius: 100px; border: none; cursor: pointer; font-family: 'Plus Jakarta Sans', sans-serif; transition: background 0.2s, transform 0.15s, box-shadow 0.2s; }
+    .cta-btn-gold:hover { background: #f5ad00; transform: translateY(-2px); box-shadow: 0 10px 30px rgba(255,184,28,0.4); }
+    .cta-btn-outline { background: transparent; color: #fff; font-weight: 700; font-size: 15px; padding: 14px 36px; border-radius: 100px; border: 2px solid rgba(255,255,255,0.35); cursor: pointer; font-family: 'Plus Jakarta Sans', sans-serif; transition: border-color 0.2s; }
+    .cta-btn-outline:hover { border-color: rgba(255,255,255,0.75); }
+
+    /* ===== FOOTER ===== */
+    footer { background: #14141a; padding: 64px 24px 32px; }
+    .footer-inner { max-width: 1280px; margin: 0 auto; }
+    .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.2fr; gap: 40px; margin-bottom: 56px; }
+    .footer-logo-wrap { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+    .footer-logo-badge { border-radius: 12px; padding: 10px 14px; display: inline-flex; align-items: center; }
+    .footer-logo-img { height: 60px; width: auto; display: block; }
+    .footer-brand { font-weight: 800; color: #fff; font-size: 16px; letter-spacing: -0.3px; }
+    .footer-tagline { font-size: 12.5px; color: rgba(255,255,255,0.40); line-height: 1.65; max-width: 260px; margin-bottom: 20px; }
+    .footer-col-title { font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
+    .footer-links { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a { font-size: 13px; color: rgba(255,255,255,0.50); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: #ffb81c; }
+    .footer-contact-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; }
+    .footer-contact-item svg { width: 15px; height: 15px; color: rgba(255,255,255,0.40); flex-shrink: 0; margin-top: 1px; }
+    .footer-contact-item a, .footer-contact-item span { font-size: 12.5px; color: rgba(255,255,255,0.55); text-decoration: none; }
+    .footer-contact-item a:hover { color: #ffb81c; }
+    .footer-social { display: flex; gap: 10px; margin-top: 20px; }
+    .footer-social a { width: 34px; height: 34px; border-radius: 10px; background: rgba(255,255,255,0.07); display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
+    .footer-social a:hover { background: rgba(255,184,28,0.20); }
+    .footer-social svg { width: 15px; height: 15px; color: rgba(255,255,255,0.55); }
+    .footer-social a:hover svg { color: #ffb81c; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 28px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .footer-copy { font-size: 12px; color: rgba(255,255,255,0.30); }
+    .footer-legal { display: flex; gap: 20px; }
+    .footer-legal a { font-size: 12px; color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.2s; }
+    .footer-legal a:hover { color: rgba(255,255,255,0.65); }
+
+    /* Newsletter form */
+    .newsletter-form { display: flex; gap: 8px; margin-top: 16px; }
+    .newsletter-input {
+      flex: 1; padding: 9px 14px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.06); color: #fff; font-size: 12.5px;
+      font-family: 'Plus Jakarta Sans', sans-serif; outline: none;
+      transition: border-color 0.2s;
+    }
+    .newsletter-input::placeholder { color: rgba(255,255,255,0.30); }
+    .newsletter-input:focus { border-color: rgba(255,184,28,0.50); }
+    .newsletter-btn {
+      background: #ffb81c; color: #2e0b56; font-weight: 700; font-size: 12px;
+      padding: 9px 16px; border-radius: 10px; border: none; cursor: pointer;
+      font-family: 'Plus Jakarta Sans', sans-serif; transition: background 0.2s;
+      white-space: nowrap;
+    }
+    .newsletter-btn:hover { background: #f5ad00; }
+
+    .caveat-banner {
+      background: rgba(255,255,255,0.07);
+      border-left: 3px solid #ffb81c;
+      border-radius: 10px;
+      padding: 14px 18px;
+      margin: 24px 0 0;
+      font-size: 12px;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.65;
+    }
+    .caveat-banner a { color: #ffb81c; font-weight: 700; text-decoration: none; }
+    .caveat-banner a:hover { color: #fff; }
+
+    /* ===== SCROLL ANIMATIONS ===== */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-left { opacity: 0; transform: translateX(-30px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+    .reveal-right { opacity: 0; transform: translateX(30px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+    .stagger-1 { transition-delay: 0.05s; }
+    .stagger-2 { transition-delay: 0.12s; }
+    .stagger-3 { transition-delay: 0.19s; }
+    .stagger-4 { transition-delay: 0.26s; }
+    .stagger-5 { transition-delay: 0.33s; }
+    .stagger-6 { transition-delay: 0.40s; }
+
+    /* ===== MOBILE NAV MENU ===== */
+    #mobile-menu {
+      display: none; position: fixed; inset: 0; z-index: 200;
+      background: rgba(46,11,86,0.55); backdrop-filter: blur(6px);
+      opacity: 0; transition: opacity 0.25s ease;
+    }
+    #mobile-menu.open { display: block; opacity: 1; }
+    .mobile-panel {
+      position: absolute; top: 0; right: 0; bottom: 0; width: 340px; max-width: 90vw;
+      background: #fff; padding: 20px 18px 28px; overflow-y: auto;
+      transform: translateX(100%); transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: -12px 0 40px rgba(46,11,86,0.22);
+      display: flex; flex-direction: column;
+    }
+    #mobile-menu.open .mobile-panel { transform: translateX(0); }
+
+    .mobile-panel-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 18px; padding: 4px 4px 16px;
+      border-bottom: 1px solid rgba(92,6,140,0.08);
+    }
+    .mobile-close {
+      background: rgba(92,6,140,0.06); border: none; cursor: pointer;
+      border-radius: 12px; width: 38px; height: 38px;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .mobile-close:hover { background: rgba(92,6,140,0.12); transform: rotate(90deg); }
+    .mobile-close svg { width: 18px; height: 18px; color: #2e0b56; }
+
+    /* Primary CTAs */
+    .mobile-account-actions { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; padding: 0 2px; }
+    .mobile-btn-primary, .mobile-btn-outline {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      font-size: 14px; font-weight: 700;
+      padding: 13px 20px; border-radius: 100px;
+      text-decoration: none;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      transition: transform 0.15s, box-shadow 0.2s, background 0.2s, border-color 0.2s;
+    }
+    .mobile-btn-primary { background: #ffb81c; color: #2e0b56; border: none; }
+    .mobile-btn-primary:hover { background: #f5ad00; transform: translateY(-1px); box-shadow: 0 8px 20px rgba(255,184,28,0.35); }
+    .mobile-btn-outline { background: transparent; color: #5c068c; border: 2px solid rgba(92,6,140,0.18); }
+    .mobile-btn-outline:hover { border-color: #5c068c; background: rgba(92,6,140,0.04); }
+
+    /* Section divider label */
+    .mobile-section-label {
+      font-size: 10.5px; font-weight: 700; color: rgba(92,6,140,0.40);
+      text-transform: uppercase; letter-spacing: 1.2px;
+      padding: 16px 6px 8px; margin-top: 4px;
+    }
+
+    /* Accordion sections */
+    .mobile-nav-list { display: flex; flex-direction: column; gap: 4px; }
+    .mobile-nav-section {
+      border-radius: 12px;
+      overflow: hidden;
+      transition: background 0.2s;
+    }
+    .mobile-nav-section.open { background: rgba(92,6,140,0.035); }
+    .mobile-nav-toggle {
+      display: flex; align-items: center; justify-content: space-between;
+      width: 100%; background: none; border: none; cursor: pointer;
+      font-size: 14.5px; font-weight: 700; color: #2e0b56;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      padding: 13px 12px; text-align: left;
+      border-radius: 12px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .mobile-nav-toggle:hover { background: rgba(92,6,140,0.05); color: #5c068c; }
+    .mobile-nav-section.open .mobile-nav-toggle { color: #5c068c; }
+    .mobile-nav-chevron-wrap {
+      width: 24px; height: 24px; border-radius: 50%;
+      background: rgba(92,6,140,0.06);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; transition: background 0.2s, transform 0.3s ease;
+    }
+    .mobile-nav-section.open .mobile-nav-chevron-wrap { background: #5c068c; transform: rotate(180deg); }
+    .mobile-nav-chevron { width: 11px; height: 11px; color: rgba(92,6,140,0.55); transition: color 0.2s; flex-shrink: 0; }
+    .mobile-nav-section.open .mobile-nav-chevron { color: #fff; }
+    .mobile-nav-links {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      padding: 0 12px;
+    }
+    .mobile-nav-section.open .mobile-nav-links { max-height: 480px; padding-bottom: 8px; }
+    .mobile-nav-links a {
+      display: block; font-size: 13px; font-weight: 500; color: rgba(46,11,86,0.65);
+      text-decoration: none; padding: 8px 10px 8px 16px;
+      transition: color 0.15s, background 0.15s;
+      border-left: 2px solid rgba(92,6,140,0.12);
+      margin-left: 6px;
+      border-radius: 0 8px 8px 0;
+    }
+    .mobile-nav-links a:hover { color: #5c068c; background: rgba(92,6,140,0.05); border-left-color: #5c068c; }
+
+    /* Flat top-level links */
+    .mobile-nav-section-flat { display: flex; flex-direction: column; gap: 2px; }
+    .mobile-nav-section-flat a {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 14.5px; font-weight: 700; color: rgba(46,11,86,0.85);
+      text-decoration: none; padding: 12px 12px;
+      border-radius: 12px;
+      transition: color 0.15s, background 0.15s;
+    }
+    .mobile-nav-section-flat a:hover { color: #5c068c; background: rgba(92,6,140,0.05); }
+
+    /* Social row */
+    .mobile-social-row {
+      display: flex; gap: 10px; justify-content: center;
+      margin-top: 20px; padding-top: 18px;
+      border-top: 1px solid rgba(92,6,140,0.08);
+    }
+    .mobile-social-row a {
+      width: 38px; height: 38px; border-radius: 10px;
+      background: rgba(92,6,140,0.06);
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s, transform 0.15s;
+      color: #5c068c;
+    }
+    .mobile-social-row a:hover { background: #5c068c; color: #fff; transform: translateY(-2px); }
+    .mobile-social-row svg { width: 16px; height: 16px; }
+
+    .newsletter-body-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .newsletter-body-card {
+      background: #f8f4fc;
+      border: 1px solid rgba(92,6,140,0.10);
+      border-radius: 28px;
+      padding: 44px 40px;
+    }
+    @media (max-width: 768px) {
+      .newsletter-body-wrap { grid-template-columns: 1fr; gap: 40px; }
+      .newsletter-body-card { padding: 32px 24px; }
+    }
+
+    /* ===== UTILITY ===== */
+    .check-list { list-style: none; padding: 0; margin: 0 0 28px; display: flex; flex-direction: column; gap: 12px; }
+    .check-list li { display: flex; align-items: flex-start; gap: 12px; }
+    .check-dot { width: 22px; height: 22px; border-radius: 50%; background: rgba(255,184,28,0.18); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+    .check-dot svg { width: 11px; height: 11px; color: #5c068c; }
+    .check-title { font-size: 14.5px; font-weight: 700; color: #2e0b56; margin-bottom: 2px; }
+    .check-sub { font-size: 13px; color: rgba(46,11,86,0.55); }
+
+    .section-img { width: 100%; border-radius: 22px; object-fit: cover; display: block; box-shadow: 0 24px 60px rgba(46,11,86,0.14); }
+
+    .app-screenshot-wrap {
+      display: flex; justify-content: center; align-items: center;
+      background: rgba(92,6,140,0.04);
+      border-radius: 24px;
+      padding: 24px;
+      min-height: 480px;
+    }
+    .app-screenshot {
+      width: 100%; max-width: 520px;
+      height: auto; object-fit: contain;
+      display: block;
+      filter: drop-shadow(0 24px 50px rgba(46,11,86,0.18));
+    }
+
+    .divider { height: 1px; background: rgba(92,6,140,0.08); margin: 0; }
+
+    /* Tag pill */
+    .tag-pill { display: inline-flex; align-items: center; gap: 6px; background: rgba(92,6,140,0.08); border-radius: 100px; padding: 5px 12px 5px 8px; margin-bottom: 18px; }
+    .tag-dot { width: 7px; height: 7px; border-radius: 50%; background: #5c068c; }
+    .tag-text { font-size: 11px; font-weight: 700; color: #5c068c; text-transform: uppercase; letter-spacing: 0.8px; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .four-col { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .fund-grid { grid-template-columns: repeat(2, 1fr); }
+      .nav-links { gap: 0; }
+      .nav-btn { font-size: 12px; padding: 8px 7px; }
+      .hero-inner { gap: 36px; }
+      .dropdown-wide { min-width: 440px; }
+      .nav-item:nth-last-child(-n+2) .dropdown { left: auto; right: 0; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: block; }
+      .btn-signin, .nav-actions > .btn-primary { display: none; }
+      .hero-section { padding: 48px 20px 56px; min-height: auto; }
+      .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+      .hero-visual { display: none; }
+      .two-col { grid-template-columns: 1fr; gap: 40px; }
+      .three-col { grid-template-columns: 1fr; }
+      .four-col { grid-template-columns: 1fr 1fr; }
+      .fund-grid { grid-template-columns: 1fr; }
+      .stats-strip { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+      #top-bar { display: none; }
+      .stats-strip-section { display: none; }
+      .hero-stats { gap: 12px; }
+      .hero-stat-num { font-size: 22px; }
+      .hero-stat-label { font-size: 11px; }
+      section { padding: 56px 20px; }
+      .cta-section { padding: 56px 20px; }
+    }
+    @media (max-width: 600px) {
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; margin-bottom: 32px; }
+      .footer-col-mobile-hide { display: none; }
+      .footer-tagline { max-width: none; }
+      .footer-contact-item { font-size: 12px; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+      .footer-legal { gap: 14px; flex-wrap: wrap; }
+      .caveat-banner { display: none; }
+    }
+    @media (max-width: 480px) {
+      .four-col { grid-template-columns: 1fr; }
+      .stats-strip { grid-template-columns: 1fr 1fr; }
+      .hero-stats { gap: 6px; }
+      .hero-stat-num { font-size: 17px; }
+      .hero-stat-label { font-size: 9.5px; white-space: normal; line-height: 1.3; }
+      .hero-ctas { flex-direction: column; align-items: stretch; }
+      .hero-cta-primary, .hero-cta-secondary { justify-content: center; }
+      .cta-btns { flex-direction: column; align-items: stretch; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===================== TOP BAR ===================== -->
+<div id="top-bar">
+  <div class="top-bar-inner">
+    <div class="top-bar-fcmb-group">
+      <button class="top-bar-fcmb-btn">
+        FCMB Group
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2,4 6,8 10,4"/></svg>
+      </button>
+      <div class="top-bar-dropdown">
+        <a href="https://www.fcmbgroup.com/" target="_blank">FCMB Group Plc</a>
+        <a href="https://www.fcmb.com/" target="_blank">FCMB</a>
+        <a href="https://www.cslstockbrokers.com/" target="_blank">CSL Stockbrokers</a>
+        <a href="https://www.fcmbcapitalmarketsng.com/" target="_blank">FCMB Capital Markets</a>
+        <a href="https://www.fcmbassetmanagement.com/" target="_blank">FCMB Asset Management</a>
+        <a href="https://www.fcmb.com/fcmb-microfinance-initiative" target="_blank">FCMB Microfinance Bank</a>
+        <a href="https://www.fcmbuk.com/" target="_blank">FCMB UK</a>
+        <a href="https://www.creditdirect.ng/" target="_blank">Credit Direct Limited</a>
+        <a href="https://www.fcmbtrustees.com/" target="_blank">FCMB Trustees</a>
+      </div>
+    </div>
+    <div class="top-bar-right">
+      <div class="top-bar-links">
+        <a href="https://web.fcmbpensions.com/clientportal/Account/Login" target="_blank">My Account</a>
+        <a href="https://fcmbpensions.com/RSA-transfer-window" target="_blank">RSA Transfer</a>
+        <a href="https://fcmbpensions.com/downloads/HOW_TO_RESOLVE_UNCREDITED_CONTRIBUTIONS.pdf" target="_blank">TCF Requirements</a>
+        <a href="https://fcmbpensions.com/rate-of-returns" target="_blank">Rate of Returns</a>
+        <a href="https://fcmbpensions.com/pencare-scheme" target="_blank">PenCare Scheme</a>
+        <a href="https://fcmbpensions.com/career" target="_blank">Careers</a>
+      </div>
+      <div class="social-links">
+      <a href="https://twitter.com/fcmbpensions" target="_blank" title="Twitter/X">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      </a>
+      <a href="https://www.facebook.com/fcmbpensions/" target="_blank" title="Facebook">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/fcmbpensions/" target="_blank" title="Instagram">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/company/fcmb-pensions/" target="_blank" title="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      <a href="https://api.whatsapp.com/send?phone=08099728021" target="_blank" title="WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+      </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== MAIN NAV ===================== -->
+<nav id="main-nav">
+  <div class="nav-inner">
+    <!-- Logo -->
+    <a href="#" class="logo-wrap">
+      <img src="FCMBPensionsLogo.png" alt="FCMB Pensions" class="logo-img">
+    </a>
+
+    <!-- Desktop Nav Links -->
+    <nav class="nav-links">
+      <!-- About Us -->
+      <div class="nav-item">
+        <button class="nav-btn">
+          About Us
+          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2,4 6,8 10,4"/></svg>
+        </button>
+        <div class="dropdown">
+          <a href="https://fcmbpensions.com/about-us" target="_blank">Who We Are</a>
+          <a href="https://fcmbpensions.com/our-board" target="_blank">Our Board</a>
+          <a href="https://fcmbpensions.com/management-team" target="_blank">Management Team</a>
+          <a href="https://fcmbpensions.com/our-partners" target="_blank">Our Partners</a>
+        </div>
+      </div>
+
+      <!-- Products & Services -->
+      <div class="nav-item">
+        <button class="nav-btn">
+          Products &amp; Services
+          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2,4 6,8 10,4"/></svg>
+        </button>
+        <div class="dropdown dropdown-wide">
+          <div>
+            <div class="dropdown-section-title">RSA Products</div>
+            <a href="https://fcmbpensions.com/retirement-savings-account" target="_blank">Retirement Savings Account</a>
+            <a href="https://fcmbpensions.com/rsa-fund" target="_blank">RSA Fund</a>
+            <a href="https://fcmbpensions.com/rsa-fund-information" target="_blank">RSA Funds Information</a>
+            <a href="https://fcmbpensions.com/nsitf-funds-transfer" target="_blank">NSITF Funds Transfer</a>
+            <a href="https://fcmbpensions.com/RSA-transfer-window" target="_blank">RSA Transfer Window</a>
+          </div>
+          <div>
+            <div class="dropdown-section-title">Other Plans</div>
+            <a href="https://fcmbpensions.com/retiree-fund" target="_blank">Retiree Fund</a>
+            <a href="https://fcmbpensions.com/ethical-fund" target="_blank">Ethical/Non-Interest Fund</a>
+            <a href="https://fcmbpensions.com/personal-pension-plan" target="_blank">Personal Pension Plan</a>
+            <a href="https://fcmbpensions.com/defined-benefits" target="_blank">Defined Benefit Scheme</a>
+            <a href="https://fcmbpensions.com/voluntary-contributions" target="_blank">Voluntary Contributions</a>
+            <a href="https://fcmbpensions.com/retirement-planning" target="_blank">Retirement Planning</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Benefit Administration -->
+      <div class="nav-item">
+        <button class="nav-btn">
+          Benefit Administration
+          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2,4 6,8 10,4"/></svg>
+        </button>
+        <div class="dropdown dropdown-wide">
+          <div>
+            <div class="dropdown-section-title">Accessing Benefits</div>
+            <a href="https://fcmbpensions.com/retirement" target="_blank">Retirement</a>
+            <a href="https://fcmbpensions.com/programmed-withdrawal" target="_blank">Programmed Withdrawal</a>
+            <a href="https://fcmbpensions.com/temporary-access" target="_blank">Temporary Access (25%)</a>
+            <a href="https://fcmbpensions.com/en-bloc" target="_blank">En Bloc</a>
+            <a href="https://fcmbpensions.com/death-benefits" target="_blank">Death Benefits</a>
+            <a href="https://fcmbpensions.com/medical-reasons" target="_blank">Medical Reasons</a>
+          </div>
+          <div>
+            <div class="dropdown-section-title">Additional Schemes</div>
+            <a href="https://fcmbpensions.com/voluntary-contributions-withdrawal" target="_blank">Voluntary Contributions Withdrawal</a>
+            <a href="https://fcmbpensions.com/cross-border-arrangements" target="_blank">Cross Border Arrangements</a>
+            <a href="https://fcmbpensions.com/equity-contribution-for-residential-mortgage" target="_blank">Equity for Residential Mortgage</a>
+            <a href="https://fcmbpensions.com/steps-for-accessing-retirement-benefits" target="_blank">Steps for Accessing Benefits</a>
+            <a href="https://fcmbpensions.com/contributory-pension-scheme" target="_blank">CPS Retirement Pack</a>
+          </div>
+        </div>
+      </div>
+
+      <a href="https://fcmbpensions.com/retirement-lifestyle-planner" target="_blank" class="nav-btn">Retirement Planner</a>
+
+      <!-- More Links -->
+      <div class="nav-item">
+        <button class="nav-btn">
+          Resources
+          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2,4 6,8 10,4"/></svg>
+        </button>
+        <div class="dropdown dropdown-wide">
+          <div>
+            <div class="dropdown-section-title">Knowledge</div>
+            <a href="https://fcmbpensions.com/news-and-events" target="_blank">News &amp; Events</a>
+            <a href="https://fcmbpensions.com/download" target="_blank">Downloads &amp; Forms</a>
+            <a href="https://fcmbpensions.com/faqs" target="_blank">FAQs</a>
+            <a href="https://fcmbpensions.com/multi-fund-structure" target="_blank">Multi-Fund Structure</a>
+            <a href="https://fcmbpensions.com/investors-portal" target="_blank">Investor's Portal</a>
+          </div>
+          <div>
+            <div class="dropdown-section-title">Tools &amp; Services</div>
+            <a href="https://fcmbpensions.com/mobileApp" target="_blank">Mobile App</a>
+            <a href="https://fcmbpensions.com/data-recapture" target="_blank">Data Recapture</a>
+            <a href="https://fcmbpensions.com/toll-free-service" target="_blank">Toll-Free Service</a>
+            <a href="https://fcmbpensions.com/pension-contribution-remittance-system-for-employers" target="_blank">Employer Remittance System</a>
+            <a href="https://fcmbpensions.com/feedback" target="_blank">Feedback Form</a>
+            <a href="https://fcmbpensions.com/whistleblowing" target="_blank">Whistle Blower</a>
+          </div>
+        </div>
+      </div>
+
+      <a href="https://fcmbpensions.com/contact" target="_blank" class="nav-btn">Contact Us</a>
+    </nav>
+
+    <!-- CTA Actions -->
+    <div class="nav-actions">
+      <a href="https://web.fcmbpensions.com/clientportal/Account/Login" target="_blank" class="btn-signin">Sign In</a>
+      <a href="https://web.fcmbpensions.com/onlineenrollment" target="_blank" class="btn-primary">Open Account</a>
+      <button class="hamburger" id="hamburger-btn" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ===================== MOBILE MENU ===================== -->
+<div id="mobile-menu">
+  <div class="mobile-panel">
+    <div class="mobile-panel-header">
+      <div class="logo-wrap" style="margin:0;">
+        <img src="FCMBPensionsLogo.png" alt="FCMB Pensions" class="logo-img">
+      </div>
+      <button class="mobile-close" id="mobile-close-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="mobile-account-actions">
+      <a href="https://web.fcmbpensions.com/onlineenrollment" target="_blank" class="mobile-btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        Open an account
+      </a>
+      <a href="https://web.fcmbpensions.com/clientportal/Account/Login" target="_blank" class="mobile-btn-outline">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+        Sign in
+      </a>
+    </div>
+
+    <div class="mobile-section-label">Menu</div>
+    <div class="mobile-nav-list">
+      <div class="mobile-nav-section">
+        <button class="mobile-nav-toggle" onclick="toggleMobileSection(this)">
+          About Us
+          <span class="mobile-nav-chevron-wrap"><svg class="mobile-nav-chevron" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="2,4 6,8 10,4"/></svg></span>
+        </button>
+        <div class="mobile-nav-links">
+          <a href="https://fcmbpensions.com/about-us">Who We Are</a>
+          <a href="https://fcmbpensions.com/our-board">Our Board</a>
+          <a href="https://fcmbpensions.com/management-team">Management Team</a>
+        </div>
+      </div>
+      <div class="mobile-nav-section">
+        <button class="mobile-nav-toggle" onclick="toggleMobileSection(this)">
+          Products &amp; Services
+          <span class="mobile-nav-chevron-wrap"><svg class="mobile-nav-chevron" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="2,4 6,8 10,4"/></svg></span>
+        </button>
+        <div class="mobile-nav-links">
+          <a href="https://fcmbpensions.com/retirement-savings-account">Retirement Savings Account</a>
+          <a href="https://fcmbpensions.com/rsa-fund">RSA Fund</a>
+          <a href="https://fcmbpensions.com/personal-pension-plan">Personal Pension Plan</a>
+          <a href="https://fcmbpensions.com/ethical-fund">Ethical/Non-Interest Fund</a>
+          <a href="https://fcmbpensions.com/voluntary-contributions">Voluntary Contributions</a>
+          <a href="https://fcmbpensions.com/defined-benefits">Defined Benefit Scheme</a>
+        </div>
+      </div>
+      <div class="mobile-nav-section">
+        <button class="mobile-nav-toggle" onclick="toggleMobileSection(this)">
+          Benefit Administration
+          <span class="mobile-nav-chevron-wrap"><svg class="mobile-nav-chevron" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="2,4 6,8 10,4"/></svg></span>
+        </button>
+        <div class="mobile-nav-links">
+          <a href="https://fcmbpensions.com/retirement">Retirement</a>
+          <a href="https://fcmbpensions.com/programmed-withdrawal">Programmed Withdrawal</a>
+          <a href="https://fcmbpensions.com/temporary-access">Temporary Access (25%)</a>
+          <a href="https://fcmbpensions.com/death-benefits">Death Benefits</a>
+          <a href="https://fcmbpensions.com/equity-contribution-for-residential-mortgage">Equity for Mortgage</a>
+        </div>
+      </div>
+      <div class="mobile-nav-section">
+        <button class="mobile-nav-toggle" onclick="toggleMobileSection(this)">
+          Resources
+          <span class="mobile-nav-chevron-wrap"><svg class="mobile-nav-chevron" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="2,4 6,8 10,4"/></svg></span>
+        </button>
+        <div class="mobile-nav-links">
+          <a href="https://fcmbpensions.com/news-and-events">News &amp; Events</a>
+          <a href="https://fcmbpensions.com/download">Downloads</a>
+          <a href="https://fcmbpensions.com/faqs">FAQs</a>
+          <a href="https://fcmbpensions.com/mobileApp">Mobile App</a>
+          <a href="https://fcmbpensions.com/data-recapture">Data Recapture</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobile-nav-section-flat" style="margin-top:6px;">
+      <a href="https://fcmbpensions.com/retirement-lifestyle-planner">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5c068c" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Retirement Lifestyle Planner
+      </a>
+      <a href="https://fcmbpensions.com/contact">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5c068c" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.68a19.79 19.79 0 01-3.07-8.67A2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.72 6.72l1.28-1.28a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        Contact Us
+      </a>
+      <a href="https://fcmbpensions.com/RSA-transfer-window">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5c068c" stroke-width="2"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 014-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 01-4 4H3"/></svg>
+        RSA Transfer Window
+      </a>
+    </div>
+
+    <div class="mobile-section-label">Group &amp; Other Links</div>
+    <div class="mobile-nav-list">
+      <div class="mobile-nav-section">
+        <button class="mobile-nav-toggle" onclick="toggleMobileSection(this)">
+          FCMB Group
+          <span class="mobile-nav-chevron-wrap"><svg class="mobile-nav-chevron" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="2,4 6,8 10,4"/></svg></span>
+        </button>
+        <div class="mobile-nav-links">
+          <a href="https://www.fcmbgroup.com/" target="_blank">FCMB Group Plc</a>
+          <a href="https://www.fcmb.com/" target="_blank">FCMB</a>
+          <a href="https://www.cslstockbrokers.com/" target="_blank">CSL Stockbrokers</a>
+          <a href="https://www.fcmbcapitalmarketsng.com/" target="_blank">FCMB Capital Markets</a>
+          <a href="https://www.fcmbassetmanagement.com/" target="_blank">FCMB Asset Management</a>
+          <a href="https://www.fcmb.com/fcmb-microfinance-initiative" target="_blank">FCMB Microfinance Bank</a>
+          <a href="https://www.fcmbuk.com/" target="_blank">FCMB UK</a>
+          <a href="https://www.creditdirect.ng/" target="_blank">Credit Direct Limited</a>
+          <a href="https://www.fcmbtrustees.com/" target="_blank">FCMB Trustees</a>
+        </div>
+      </div>
+      <div class="mobile-nav-section">
+        <button class="mobile-nav-toggle" onclick="toggleMobileSection(this)">
+          More Links
+          <span class="mobile-nav-chevron-wrap"><svg class="mobile-nav-chevron" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="2,4 6,8 10,4"/></svg></span>
+        </button>
+        <div class="mobile-nav-links">
+          <a href="https://web.fcmbpensions.com/clientportal/Account/Login" target="_blank">My Account</a>
+          <a href="https://fcmbpensions.com/downloads/HOW_TO_RESOLVE_UNCREDITED_CONTRIBUTIONS.pdf" target="_blank">TCF Requirements</a>
+          <a href="https://fcmbpensions.com/rate-of-returns" target="_blank">Rate of Returns</a>
+          <a href="https://fcmbpensions.com/pencare-scheme" target="_blank">PenCare Scheme</a>
+          <a href="https://fcmbpensions.com/career" target="_blank">Careers</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobile-social-row">
+      <a href="https://twitter.com/fcmbpensions" target="_blank" title="Twitter/X">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      </a>
+      <a href="https://www.facebook.com/fcmbpensions/" target="_blank" title="Facebook">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/fcmbpensions/" target="_blank" title="Instagram">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/company/fcmb-pensions/" target="_blank" title="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      <a href="https://api.whatsapp.com/send?phone=08099728021" target="_blank" title="WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero-bg hero-section">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow reveal">FCMB Pensions Limited — PenCom Licensed</div>
+      <h1 class="hero-title reveal stagger-1">The <em>smart choice</em> for a happy retirement</h1>
+      <p class="hero-subtitle reveal stagger-2">We've been helping Nigerians build secure futures for over 15 years. From your first contribution to monthly programmed withdrawals — we're with you every step of the way.</p>
+      <div class="hero-ctas reveal stagger-3">
+        <a href="https://web.fcmbpensions.com/onlineenrollment" target="_blank" class="hero-cta-primary">
+          Open an RSA
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="https://web.fcmbpensions.com/clientportal/Account/Login" target="_blank" class="hero-cta-secondary">
+          Check Balance
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </a>
+      </div>
+
+      <div class="hero-stats reveal stagger-4">
+        <div>
+          <div class="hero-stat-num">500K+</div>
+          <div class="hero-stat-label">Contributors</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">₦1.2T</div>
+          <div class="hero-stat-label">Assets Managed</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">15+</div>
+          <div class="hero-stat-label">Years of Service</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">98%</div>
+          <div class="hero-stat-label">Claims Settled</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual reveal-right">
+      <div class="hero-img-wrap" id="hero-carousel">
+        <img class="hero-carousel-img active" src="image1.jpg" alt="FCMB Pensions — happy retirement">
+        <img class="hero-carousel-img" src="image2.jpg" alt="FCMB Pensions — professionals planning retirement">
+        <img class="hero-carousel-img" src="image3.jpg" alt="FCMB Pensions — secure savings">
+        <img class="hero-carousel-img" src="image4.jpg" alt="FCMB Pensions — retiree enjoying life">
+      </div>
+      <div class="hero-float-card card-1">
+        <div class="float-icon gold">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffb81c" stroke-width="2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+        </div>
+        <div>
+          <div class="float-label">Avg Annual Growth</div>
+          <div class="float-value" style="color:#5c068c">12.4%</div>
+        </div>
+      </div>
+      <div class="hero-float-card card-2">
+        <div class="float-icon teal">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00a6d3" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div>
+          <div class="float-label">PenCom Licensed</div>
+          <div class="float-value" style="color:#00a6d3">Trusted</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TICKER ===================== -->
+<div class="ticker-wrap">
+  <div class="ticker-track">
+    <span class="ticker-item"><span class="ticker-dot"></span>RSA Transfer Window Now Open</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Ethical/Non-Interest Fund (Fund VI) — Align Your Investments With Your Values</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Use 25% of Your RSA for a Home Down Payment</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>NDPR Trust Mark 2025 Certified</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Download the FCMB Pensions Mobile App — iOS & Android</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Toll-Free Line: 0800-FCMBPEN — Speak to Us at Zero Cost</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Personal Pension Plan — Start Small, Think Big</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>RSA Transfer Window Now Open</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Ethical/Non-Interest Fund (Fund VI) — Align Your Investments With Your Values</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Use 25% of Your RSA for a Home Down Payment</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>NDPR Trust Mark 2025 Certified</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Download the FCMB Pensions Mobile App — iOS & Android</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Toll-Free Line: 0800-FCMBPEN — Speak to Us at Zero Cost</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Personal Pension Plan — Start Small, Think Big</span>
+  </div>
+</div>
+
+<!-- ===================== TRUST BADGES ===================== -->
+<section style="background:#fff; padding:56px 24px;">
+  <div class="section-inner">
+    <div class="four-col">
+      <div class="trust-card reveal stagger-1">
+        <div class="trust-icon" style="background:rgba(255,184,28,0.12);">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ffb81c" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="trust-title">PenCom Licensed</div>
+        <div class="trust-body">Regulated Pension Fund Administrator fully compliant with PenCom directives</div>
+      </div>
+      <div class="trust-card reveal stagger-2">
+        <div class="trust-icon" style="background:rgba(0,166,211,0.12);">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00a6d3" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <div class="trust-title">NDPR Certified</div>
+        <div class="trust-body">NDPR Trust Mark 2025 awarded — your data is protected and secure</div>
+      </div>
+      <div class="trust-card reveal stagger-3">
+        <div class="trust-icon" style="background:rgba(61,232,150,0.14);">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#3de896" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div class="trust-title">Audited Accounts</div>
+        <div class="trust-body">Transparent financial reporting with independently audited fund accounts</div>
+      </div>
+      <div class="trust-card reveal stagger-4">
+        <div class="trust-icon" style="background:rgba(92,6,140,0.10);">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#5c068c" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+        </div>
+        <div class="trust-title">PENOP Accredited</div>
+        <div class="trust-body">Member of Pension Fund Operators Association of Nigeria (PENOP)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===================== ABOUT SECTION ===================== -->
+<section style="background:#fff; padding:80px 24px;">
+  <div class="section-inner">
+    <div class="two-col">
+      <div class="reveal-left">
+        <div class="tag-pill"><span class="tag-dot"></span><span class="tag-text">About FCMB Pensions</span></div>
+        <h2 class="section-title">Trusted by <em>500,000+</em> Nigerians</h2>
+        <p class="section-body" style="margin-bottom:28px;">For over 15 years, we've been committed to helping Nigerians — in the public and private sectors, formal and informal economies — build secure, dignified futures. As a PenCom-licensed Pension Fund Administrator, we combine professional expertise with genuine care for your financial wellbeing.</p>
+        <ul class="check-list">
+          <li>
+            <div class="check-dot"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div><div class="check-title">Regulated &amp; Fully Licensed</div><div class="check-sub">PenCom-regulated administrator with a clean compliance record</div></div>
+          </li>
+          <li>
+            <div class="check-dot"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div><div class="check-title">Transparent Fund Management</div><div class="check-sub">Clear performance reports, audited accounts, and real-time portfolio visibility</div></div>
+          </li>
+          <li>
+            <div class="check-dot"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div><div class="check-title">Dedicated Pension Specialists</div><div class="check-sub">Expert support via toll-free line, branches, and our digital portal</div></div>
+          </li>
+          <li>
+            <div class="check-dot"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div><div class="check-title">Benefits Administered FREE</div><div class="check-sub">Retirement and terminal benefits are processed at no charge — always</div></div>
+          </li>
+        </ul>
+        <a href="https://fcmbpensions.com/about-us" target="_blank" class="btn-primary" style="display:inline-flex; align-items:center; gap:8px;">
+          Learn About Us
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+      <div class="reveal-right">
+        <img src="image9.jpg" alt="FCMB Pensions professional advisor" class="section-img">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== MULTI-FUND STRUCTURE ===================== -->
+<section class="light-purple-bg" style="padding:80px 24px;">
+  <div class="section-inner">
+    <div class="reveal" style="max-width:600px; margin-bottom:50px;">
+      <div class="tag-pill"><span class="tag-dot"></span><span class="tag-text">Multi-Fund Structure</span></div>
+      <h2 class="section-title">Six funds. Every <em>risk profile</em> covered.</h2>
+      <p style="font-size:16px; color:rgba(46,11,86,0.65); line-height:1.7;">The Life-Cycle Investment Structure aligns your risk appetite with your investment horizon at each stage of life — from early career to active retirement.</p>
+    </div>
+    <div class="fund-grid">
+      <div class="fund-card reveal stagger-1">
+        <div class="fund-label">Fund I</div>
+        <div class="fund-name">Conservative</div>
+        <div class="fund-desc">Predominantly bonds and fixed income. Lowest risk, for contributors near retirement (50+).</div>
+        <div class="fund-fee">Admin Fee: <strong>₦100.00</strong></div>
+      </div>
+      <div class="fund-card reveal stagger-2">
+        <div class="fund-badge">Default</div>
+        <div class="fund-label">Fund II</div>
+        <div class="fund-name">Balanced</div>
+        <div class="fund-desc">Balanced mix of bonds and equities. Moderate risk, suitable for most contributors aged 40–49.</div>
+        <div class="fund-fee">Admin Fee: <strong>₦100.00</strong></div>
+      </div>
+      <div class="fund-card reveal stagger-3">
+        <div class="fund-label">Fund III</div>
+        <div class="fund-name">Growth</div>
+        <div class="fund-desc">Higher equity allocation for stronger growth potential. For younger contributors aged under 40.</div>
+        <div class="fund-fee">Admin Fee: <strong>₦100.00</strong></div>
+      </div>
+      <div class="fund-card reveal stagger-4">
+        <div class="fund-label">Fund IV</div>
+        <div class="fund-name">Aggressive Growth</div>
+        <div class="fund-desc">Maximum equity exposure for long investment horizons and higher risk appetite.</div>
+        <div class="fund-fee">Admin Fee: <strong>₦50.00</strong></div>
+      </div>
+      <div class="fund-card reveal stagger-5">
+        <div class="fund-badge">Shariah</div>
+        <div class="fund-label">Fund V</div>
+        <div class="fund-name">Ethical / Non-Interest</div>
+        <div class="fund-desc">Sharia-compliant fund investing in non-interest products. Align your pension with your values.</div>
+        <div class="fund-fee">Admin Fee: <strong>₦20 – ₦80</strong> (based on contribution)</div>
+      </div>
+      <div class="fund-card reveal stagger-6">
+        <div class="fund-label">Fund VI</div>
+        <div class="fund-name">Retiree Preservation</div>
+        <div class="fund-desc">Capital preservation for retirees on programmed withdrawals. Active and Retiree sub-funds.</div>
+        <div class="fund-fee">Admin Fee: <strong>₦100.00</strong></div>
+      </div>
+    </div>
+    <div class="reveal" style="margin-top:36px; text-align:center;">
+      <a href="https://fcmbpensions.com/multi-fund-structure" target="_blank" class="btn-primary">Explore Multi-Fund Structure</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PENSION PLANS ===================== -->
+<section class="dark-bg" style="padding:80px 24px;">
+  <div class="section-inner">
+    <div class="reveal" style="max-width:600px; margin-bottom:60px;">
+      <div class="tag-pill" style="background:rgba(255,184,28,0.15);"><span class="tag-dot" style="background:#ffb81c;"></span><span class="tag-text" style="color:#ffb81c;">Retirement Solutions</span></div>
+      <h2 class="section-title" style="color:#fff;">A plan for every <em>stage of life</em></h2>
+      <p style="font-size:16px; color:rgba(255,255,255,0.60); line-height:1.7;">Whether you're starting your career, running a business, or in the informal economy — we have a pension designed for your life.</p>
+    </div>
+    <div class="three-col">
+      <div class="plan-card reveal stagger-1">
+        <div class="plan-tag">RSA</div>
+        <div class="plan-name">Retirement Savings Account</div>
+        <div class="plan-desc">Mandatory contributions for employees in organisations with 3+ staff. Employer and employee both contribute — it adds up faster than you think.</div>
+        <ul class="plan-features">
+          <li><div class="plan-check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="2,6 5,9 10,3"/></svg></div>Employer + employee contributions (18% of monthly salary)</li>
+          <li><div class="plan-check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="2,6 5,9 10,3"/></svg></div>Six fund options to match your risk appetite</li>
+          <li><div class="plan-check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="2,6 5,9 10,3"/></svg></div>24/7 balance access via portal and mobile app</li>
+          <li><div class="plan-check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="2,6 5,9 10,3"/></svg></div>Easy RSA transfer window</li>
+        </ul>
+      </div>
+      <div class="plan-card featured reveal stagger-2">
+        <div class="plan-badge">Popular</div>
+        <div class="plan-tag">Voluntary</div>
+        <div class="plan-name">Voluntary Contributions</div>
+        <div class="plan-desc">Go beyond the mandatory minimum. Boost your retirement savings with flexible, tax-efficient voluntary contributions on top of your RSA.</div>
+        <ul class="plan-features">
+          <li><div class="plan-check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="2,6 5,9 10,3"/></svg></div>Significant tax benefits on contributions</li>
+          <li><div class="plan-check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="2,6 5,9 10,3"/></svg></div>Flexible withdrawal after 2 years (50%)</li>
+          <li><div class="plan-check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="2,6 5,9 10,3"/></svg></div>Higher growth potential across all fund types</li>
+          <li><div class="plan-check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="2,6 5,9 10,3"/></svg></div>Contribute at any time, any amount</li>
+        </ul>
+      </div>
+      <div class="plan-card reveal stagger-3">
+        <div class="plan-tag">Personal Pension</div>
+        <div class="plan-name">Personal Pension Plan</div>
+        <div class="plan-desc">Designed for the self-employed, informal sector workers, and professionals. Start small, contribute at your pace, and build a meaningful retirement fund.</div>
+        <ul class="plan-features">
+          <li><div class="plan-check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="2,6 5,9 10,3"/></svg></div>No minimum contribution required</li>
+          <li><div class="plan-check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="2,6 5,9 10,3"/></svg></div>Partial access after 3 months</li>
+          <li><div class="plan-check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="2,6 5,9 10,3"/></svg></div>For accountants, doctors, pilots, SMEs and more</li>
+          <li><div class="plan-check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="2,6 5,9 10,3"/></svg></div>Contribute weekly, monthly — your schedule</li>
+        </ul>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:40px;" class="reveal">
+      <a href="https://web.fcmbpensions.com/onlineenrollment" target="_blank" class="cta-btn-gold">Get Started Today</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== DIGITAL / MOBILE APP ===================== -->
+<section style="background:#fff; padding:80px 24px;">
+  <div class="section-inner">
+    <div class="two-col">
+      <div class="reveal-left">
+        <div class="tag-pill"><span class="tag-dot"></span><span class="tag-text">Digital Experience</span></div>
+        <h2 class="section-title">Your pension, in the <em>palm of your hand</em></h2>
+        <p style="font-size:16px; color:rgba(46,11,86,0.65); line-height:1.7; margin-bottom:32px;">The FCMB Pensions app is the most convenient way to monitor your savings, switch funds, and stay in control of your retirement — anytime, anywhere.</p>
+        <div class="app-feature">
+          <div class="app-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="3" stroke-linecap="round"/></svg></div>
+          <div><div class="app-feature-title">iOS &amp; Android App</div><div class="app-feature-body">Manage your pension from your phone — check balances, view statements, switch funds</div></div>
+        </div>
+        <div class="app-feature">
+          <div class="app-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+          <div><div class="app-feature-title">Bank-Level Security</div><div class="app-feature-body">End-to-end encryption and multi-factor authentication keeps your account safe</div></div>
+        </div>
+        <div class="app-feature">
+          <div class="app-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+          <div><div class="app-feature-title">Live Fund Performance</div><div class="app-feature-body">Track your fund's returns in real time with transparent performance dashboards</div></div>
+        </div>
+        <div class="app-feature">
+          <div class="app-icon" style="background:rgba(61,232,150,0.12);"><svg viewBox="0 0 24 24" fill="none" stroke="#3de896" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.68a19.79 19.79 0 01-3.07-8.67A2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.72 6.72l1.28-1.28a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+          <div><div class="app-feature-title">Toll-Free Support</div><div class="app-feature-body">Call +234 (0) 805 958 0002 — our specialists are ready to help you at no cost</div></div>
+        </div>
+        <div class="app-dl-btns">
+          <a href="https://goo.gl/vSMn2S" target="_blank" class="app-dl-btn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            App Store
+          </a>
+          <a href="https://goo.gl/EjUWTX" target="_blank" class="app-dl-btn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76a2 2 0 001.08-.29l12.48-7.02-2.74-2.74-10.82 10.05zM20.81 10.12l-2.69-1.52-3.09 3.09 3.09 3.09 2.71-1.52a2.07 2.07 0 000-3.14zM1.26.31A2 2 0 001 1.2V22.8a2 2 0 00.26.89l.06.06 12.55-12.55v-.3L1.32.25zM14.69 13.93l-2.74 2.74 2.74 2.74 2.74-2.74-2.74-2.74z"/></svg>
+            Google Play
+          </a>
+        </div>
+      </div>
+      <div class="reveal-right">
+        <div class="app-screenshot-wrap">
+          <img src="fcmbappimage.png" alt="FCMB Pensions mobile app" class="app-screenshot">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== BENEFIT ADMINISTRATION ===================== -->
+<section class="light-purple-bg" style="padding:80px 24px;">
+  <div class="section-inner">
+    <div style="text-align:center; margin-bottom:50px;" class="reveal">
+      <div class="tag-pill" style="display:inline-flex;"><span class="tag-dot"></span><span class="tag-text">Benefit Administration</span></div>
+      <h2 class="section-title">Accessing your benefits, <em>made simple</em></h2>
+      <p style="font-size:16px; color:rgba(46,11,86,0.60); max-width:520px; margin:0 auto; line-height:1.7;">We administer all retirement and terminal benefits entirely FREE of charge. Here's how you can access your funds when it matters most.</p>
+    </div>
+    <div class="four-col">
+      <div class="feature-card reveal stagger-1">
+        <div class="feature-icon" style="background:rgba(255,184,28,0.14);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#ffb81c" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        </div>
+        <div class="feature-title">Retirement</div>
+        <p class="feature-body">Full access to your RSA balance upon reaching retirement age (50 years+) or after mandatory 35 years of service.</p>
+      </div>
+      <div class="feature-card reveal stagger-2">
+        <div class="feature-icon" style="background:rgba(0,166,211,0.12);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#00a6d3" stroke-width="2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><rect x="2" y="3" width="20" height="14" rx="2"/></svg>
+        </div>
+        <div class="feature-title">Programmed Withdrawal</div>
+        <p class="feature-body">Systematic monthly payments from your RSA after retirement — ensuring a steady income stream for life.</p>
+      </div>
+      <div class="feature-card reveal stagger-3">
+        <div class="feature-icon" style="background:rgba(255,148,123,0.14);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#ff947b" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16" stroke-width="3" stroke-linecap="round"/></svg>
+        </div>
+        <div class="feature-title">Temporary Access (25%)</div>
+        <p class="feature-body">Access up to 25% of your RSA if you've been unemployed for 4+ months or for a residential mortgage down payment.</p>
+      </div>
+      <div class="feature-card reveal stagger-4">
+        <div class="feature-icon" style="background:rgba(92,6,140,0.10);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#5c068c" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <div class="feature-title">Death Benefits</div>
+        <p class="feature-body">Full RSA balance paid to nominated beneficiaries, plus life insurance proceeds from the employer — processed with care and urgency.</p>
+      </div>
+    </div>
+    <div class="four-col" style="margin-top:18px;">
+      <div class="feature-card reveal stagger-1">
+        <div class="feature-icon" style="background:rgba(61,232,150,0.12);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#3de896" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div class="feature-title">Home Ownership</div>
+        <p class="feature-body">Use up to 25% of your RSA as an equity contribution towards a residential mortgage. Home ownership just got closer.</p>
+      </div>
+      <div class="feature-card reveal stagger-2">
+        <div class="feature-icon" style="background:rgba(255,184,28,0.14);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#ffb81c" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <div class="feature-title">Medical Reasons</div>
+        <p class="feature-body">Withdraw your full RSA balance if you suffer a permanent disability or critical illness certified by a qualified physician.</p>
+      </div>
+      <div class="feature-card reveal stagger-3">
+        <div class="feature-icon" style="background:rgba(0,166,211,0.12);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#00a6d3" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <div class="feature-title">En Bloc</div>
+        <p class="feature-body">Lump-sum payment for retirees whose RSA balance is insufficient to procure a programmed withdrawal or annuity plan.</p>
+      </div>
+      <div class="feature-card reveal stagger-4">
+        <div class="feature-icon" style="background:rgba(92,6,140,0.10);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#5c068c" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        </div>
+        <div class="feature-title">Cross Border</div>
+        <p class="feature-body">Special arrangements for non-Nigerian expatriates who have worked in Nigeria and wish to repatriate their RSA balance.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== STATS STRIP ===================== -->
+<section class="dark-bg stats-strip-section" style="padding:0;">
+  <div class="stats-strip">
+    <div class="stat-cell reveal stagger-1">
+      <div class="stat-num">500K+</div>
+      <div class="stat-label">Contributors Nationwide</div>
+    </div>
+    <div class="stat-cell reveal stagger-2">
+      <div class="stat-num">₦1.2T</div>
+      <div class="stat-label">Assets Under Management</div>
+    </div>
+    <div class="stat-cell reveal stagger-3">
+      <div class="stat-num">15+</div>
+      <div class="stat-label">Years of Trusted Service</div>
+    </div>
+    <div class="stat-cell reveal stagger-4">
+      <div class="stat-num">98%</div>
+      <div class="stat-label">Claims Settled Successfully</div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ===================== FAQ ===================== -->
+<section class="light-purple-bg" style="padding:80px 24px;">
+  <div class="section-inner">
+    <div class="two-col" style="align-items:start;">
+      <div class="reveal-left">
+        <div class="tag-pill"><span class="tag-dot"></span><span class="tag-text">FAQs</span></div>
+        <h2 class="section-title">Common <em>questions</em></h2>
+        <p class="section-body" style="margin-bottom:28px;">Can't find what you're looking for? Our team is always ready to help.</p>
+        <a href="https://fcmbpensions.com/faqs" target="_blank" class="btn-primary">View All FAQs</a>
+      </div>
+      <div class="reveal-right">
+        <div class="faq-item open">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            I haven't registered with a PFA yet — how do I join?
+            <div class="faq-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></div>
+          </div>
+          <div class="faq-a">Simply open an account online at web.fcmbpensions.com/onlineenrollment or download our RSA Account Opening Form and visit any of our branch offices. View branch locations on our Contact Us page.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Can I transfer my RSA from another PFA to FCMB Pensions?
+            <div class="faq-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></div>
+          </div>
+          <div class="faq-a">Yes — RSA holders are permitted to transfer to another PFA once every 12 months during a transfer window. Visit fcmbpensions.com/RSA-transfer-window to initiate your transfer today.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            How can I update my account details online?
+            <div class="faq-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></div>
+          </div>
+          <div class="faq-a">Log in to your account at web.fcmbpensions.com/clientportal, then navigate to Bio Data → Update. You can update your phone number, email address, and residential address directly. You'll receive a confirmation notification immediately.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            What is the Data Recapture Exercise?
+            <div class="faq-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></div>
+          </div>
+          <div class="faq-a">PenCom has directed all RSA holders to complete a Data Recapture Exercise to ensure accurate and up-to-date records for every contributor. Visit fcmbpensions.com/data-recapture to complete yours. It only takes a few minutes.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Does FCMB Pensions charge for processing my benefits?
+            <div class="faq-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></div>
+          </div>
+          <div class="faq-a">No. FCMB Pensions administers ALL retirement and terminal benefits completely FREE of charge. We will never request payment or gifts to process your benefits. Please report any such demands immediately on +234 (0) 805 958 0002.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            What is the Ethical/Non-Interest Fund?
+            <div class="faq-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></div>
+          </div>
+          <div class="faq-a">Fund V (Ethical/Non-Interest Fund) is our Sharia-compliant pension option — investing exclusively in non-interest financial products. It allows contributors to align their pension savings with their values and faith commitments while still growing their retirement savings.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== NEWSLETTER SECTION ===================== -->
+<section style="background:#fff; padding:80px 24px;">
+  <div class="section-inner">
+    <div class="newsletter-body-wrap">
+      <div class="newsletter-body-left reveal-left">
+        <div class="tag-pill"><span class="tag-dot"></span><span class="tag-text">Stay Informed</span></div>
+        <h2 class="section-title" style="max-width:440px;">Get pension <em>updates</em> straight to your inbox</h2>
+        <p style="font-size:16px; color:rgba(46,11,86,0.62); line-height:1.75; max-width:400px;">News, regulatory updates, fund performance reports, and retirement tips — delivered to you directly. No spam, ever.</p>
+        <ul style="list-style:none;padding:0;margin:28px 0 0;display:flex;flex-direction:column;gap:12px;">
+          <li style="display:flex;align-items:center;gap:10px;font-size:14px;color:rgba(46,11,86,0.65);">
+            <span style="width:20px;height:20px;border-radius:50%;background:rgba(92,6,140,0.10);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#5c068c" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            Fund performance &amp; rate of returns
+          </li>
+          <li style="display:flex;align-items:center;gap:10px;font-size:14px;color:rgba(46,11,86,0.65);">
+            <span style="width:20px;height:20px;border-radius:50%;background:rgba(92,6,140,0.10);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#5c068c" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            PenCom &amp; regulatory announcements
+          </li>
+          <li style="display:flex;align-items:center;gap:10px;font-size:14px;color:rgba(46,11,86,0.65);">
+            <span style="width:20px;height:20px;border-radius:50%;background:rgba(92,6,140,0.10);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#5c068c" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            Retirement planning tips &amp; guides
+          </li>
+        </ul>
+      </div>
+      <div class="newsletter-body-right reveal-right">
+        <div class="newsletter-body-card">
+          <div style="font-size:13px;font-weight:600;color:rgba(46,11,86,0.50);margin-bottom:8px;letter-spacing:0.3px;">Join 50,000+ subscribers</div>
+          <h3 style="font-family:'Playfair Display',serif;font-size:26px;font-weight:800;color:#2e0b56;margin:0 0 6px;line-height:1.2;">Never miss an update</h3>
+          <p style="font-size:14px;color:rgba(46,11,86,0.55);margin:0 0 28px;line-height:1.65;">Your retirement matters. Stay ahead with insights from our pension experts.</p>
+          <form onsubmit="handleBodyNewsletter(event)" style="display:flex;flex-direction:column;gap:14px;">
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <label style="font-size:12px;font-weight:700;color:rgba(46,11,86,0.60);text-transform:uppercase;letter-spacing:0.5px;">Full Name</label>
+              <input type="text" placeholder="e.g. Adebayo Okafor" required
+                style="padding:12px 16px;border:1.5px solid rgba(92,6,140,0.15);border-radius:12px;font-size:14px;font-family:'Plus Jakarta Sans',sans-serif;color:#2e0b56;outline:none;transition:border-color 0.2s;background:#fff;"
+                onfocus="this.style.borderColor='rgba(92,6,140,0.45)'" onblur="this.style.borderColor='rgba(92,6,140,0.15)'">
+            </div>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <label style="font-size:12px;font-weight:700;color:rgba(46,11,86,0.60);text-transform:uppercase;letter-spacing:0.5px;">Email Address</label>
+              <input type="email" placeholder="you@example.com" required
+                style="padding:12px 16px;border:1.5px solid rgba(92,6,140,0.15);border-radius:12px;font-size:14px;font-family:'Plus Jakarta Sans',sans-serif;color:#2e0b56;outline:none;transition:border-color 0.2s;background:#fff;"
+                onfocus="this.style.borderColor='rgba(92,6,140,0.45)'" onblur="this.style.borderColor='rgba(92,6,140,0.15)'">
+            </div>
+            <button type="submit" id="newsletter-body-btn"
+              style="background:#ffb81c;color:#2e0b56;font-weight:800;font-size:15px;padding:14px 28px;border-radius:100px;border:none;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:background 0.2s,transform 0.15s,box-shadow 0.2s;display:flex;align-items:center;justify-content:center;gap:8px;"
+              onmouseover="this.style.background='#f5ad00';this.style.transform='translateY(-1px)';this.style.boxShadow='0 10px 28px rgba(255,184,28,0.40)'"
+              onmouseout="this.style.background='#ffb81c';this.style.transform='';this.style.boxShadow=''">
+              Subscribe Now
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </form>
+          <p style="font-size:11.5px;color:rgba(46,11,86,0.38);margin:14px 0 0;text-align:center;">We respect your privacy. Unsubscribe at any time.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo-wrap">
+          <div class="footer-logo-badge">
+            <img src="FCMBPensionsLogo.png" alt="FCMB Pensions" class="footer-logo-img">
+          </div>
+        </div>
+        
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Plot 207, Zakaria Maimalari Street, Cadastral Zone AO, CBD, Abuja</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.68a19.79 19.79 0 01-3.07-8.67A2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.72 6.72l1.28-1.28a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          <a href="tel:+2348059580002">+234 (0) 805 958 0002</a>
+        </div>
+
+        <div class="footer-social">
+          <a href="https://twitter.com/fcmbpensions" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="https://www.facebook.com/fcmbpensions/" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+          <a href="https://www.instagram.com/fcmbpensions/" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+          <a href="https://www.linkedin.com/company/fcmb-pensions/" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+          <a href="https://api.whatsapp.com/send?phone=08099728021" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a>
+        </div>
+
+        <div class="caveat-banner">
+          <strong>Important Notice:</strong> FCMB Pensions administers all retirement benefits FREE of charge. We will never request payment to process your benefits. Report any such demand to <a href="tel:08059580002">08059580002</a>.
+        </div>
+      </div>
+
+      <div class="footer-col-mobile-hide">
+        <div class="footer-col-title">About Us</div>
+        <ul class="footer-links">
+          <li><a href="https://fcmbpensions.com/about-us">Who We Are</a></li>
+          <li><a href="https://fcmbpensions.com/our-board">Our Board</a></li>
+          <li><a href="https://fcmbpensions.com/management-team">Management Team</a></li>
+          <li><a href="https://fcmbpensions.com/our-partners">Our Partners</a></li>
+          <li><a href="https://fcmbpensions.com/career">Careers</a></li>
+          <li><a href="https://fcmbpensions.com/contact">Contact Us</a></li>
+          <li><a href="https://fcmbpensions.com/RSA-transfer-window">RSA Transfer Window</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col-mobile-hide">
+        <div class="footer-col-title">Resources</div>
+        <ul class="footer-links">
+          <li><a href="https://fcmbpensions.com/news-and-events">News &amp; Events</a></li>
+          <li><a href="https://fcmbpensions.com/download">Downloads &amp; Forms</a></li>
+          <li><a href="https://fcmbpensions.com/faqs">FAQs</a></li>
+          <li><a href="https://fcmbpensions.com/mobileApp">Mobile App</a></li>
+          <li><a href="https://fcmbpensions.com/data-recapture">Data Recapture</a></li>
+          <li><a href="https://fcmbpensions.com/investors-portal">Investor's Portal</a></li>
+          <li><a href="https://fcmbpensions.com/toll-free-service">Toll-Free Service</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Newsletter</div>
+        <p style="font-size:13px; color:rgba(255,255,255,0.45); margin:0 0 12px; line-height:1.6;">Get our latest news and pension updates delivered to you.</p>
+        <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+          <input type="email" class="newsletter-input" placeholder="Your email" required>
+          <button type="submit" class="newsletter-btn">Subscribe</button>
+        </form>
+        <div style="margin-top:28px;" class="footer-col-mobile-hide">
+          <div class="footer-col-title">Quick Links</div>
+          <ul class="footer-links">
+            <li><a href="https://www.pencom.gov.ng/" target="_blank">PenCom</a></li>
+            <li><a href="https://penop.com.ng/" target="_blank">PENOP</a></li>
+            <li><a href="https://fcmbpensions.com/whistleblowing">Whistle Blower</a></li>
+            <li><a href="https://fcmbpensions.com/feedback">Feedback</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 FCMB Pensions Limited. All rights reserved.</div>
+      <div class="footer-legal">
+        <a href="https://fcmbpensions.com/privacy">Privacy &amp; Security</a>
+        <a href="#">Terms of Use</a>
+        <a href="https://web.fcmbpensions.com/clientportal/Account/Login">Client Login</a>
+        <a href="https://staffmail.fcmbpensions.com/owa/auth/logon.aspx">Staff Mail</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ===== NAV SCROLL BEHAVIOUR =====
+  const mainNav = document.getElementById('main-nav');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 20) {
+      mainNav.classList.add('scrolled');
+    } else {
+      mainNav.classList.remove('scrolled');
+    }
+  });
+
+  // ===== MOBILE MENU =====
+  const mobileMenu = document.getElementById('mobile-menu');
+  document.getElementById('hamburger-btn').addEventListener('click', () => {
+    mobileMenu.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  });
+  document.getElementById('mobile-close-btn').addEventListener('click', () => {
+    mobileMenu.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+  mobileMenu.addEventListener('click', (e) => {
+    if (e.target === mobileMenu) {
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  });
+
+  // ===== SCROLL REVEAL =====
+  const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.10, rootMargin: '0px 0px -40px 0px' });
+  revealEls.forEach(el => observer.observe(el));
+
+  // ===== HERO IMAGE CAROUSEL =====
+  // Uses image1.jpg ... image4.jpg placed in the same folder as this HTML file.
+  (function () {
+    const imgs = document.querySelectorAll('#hero-carousel .hero-carousel-img');
+    if (!imgs.length) return;
+
+    let current = 0;
+    setInterval(() => {
+      imgs[current].classList.remove('active');
+      current = (current + 1) % imgs.length;
+      imgs[current].classList.add('active');
+    }, 2000);
+  })();
+
+  // ===== MOBILE NAV ACCORDION =====
+  function toggleMobileSection(btn) {
+    const section = btn.parentElement;
+    const isOpen = section.classList.contains('open');
+    const group = section.closest('.mobile-nav-list') || document;
+    group.querySelectorAll('.mobile-nav-section.open').forEach(s => s.classList.remove('open'));
+    if (!isOpen) section.classList.add('open');
+  }
+  function toggleFaq(btn) {
+    const item = btn.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  // ===== BODY NEWSLETTER =====
+  function handleBodyNewsletter(e) {
+    e.preventDefault();
+    const btn = document.getElementById('newsletter-body-btn');
+    btn.innerHTML = '✓ Subscribed!';
+    btn.style.background = '#3de896';
+    btn.style.color = '#14141a';
+    setTimeout(() => {
+      btn.innerHTML = 'Subscribe Now <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
+      btn.style.background = '';
+      btn.style.color = '';
+    }, 3000);
+    e.target.reset();
+  }
+
+  // ===== NEWSLETTER =====
+  function handleNewsletter(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.newsletter-btn');
+    btn.textContent = 'Subscribed!';
+    btn.style.background = '#3de896';
+    btn.style.color = '#14141a';
+    setTimeout(() => { btn.textContent = 'Subscribe'; btn.style.background = ''; btn.style.color = ''; }, 3000);
+    e.target.reset();
+  }
+
+  // ===== COUNTER ANIMATION =====
+  function animateCounters() {
+    const counters = document.querySelectorAll('.stat-num, .hero-stat-num');
+    counters.forEach(counter => {
+      const text = counter.textContent;
+      const num = parseFloat(text.replace(/[^0-9.]/g, ''));
+      const suffix = text.replace(/[0-9.]/g, '');
+      if (!num) return;
+      let start = 0;
+      const duration = 1800;
+      const step = 16;
+      const increment = num / (duration / step);
+      const timer = setInterval(() => {
+        start += increment;
+        if (start >= num) { start = num; clearInterval(timer); }
+        const display = num >= 1000 ? Math.floor(start).toLocaleString() : start.toFixed(num % 1 !== 0 ? 1 : 0);
+        counter.textContent = display + suffix;
+      }, step);
+    });
+  }
+
+  // Trigger counter on first visibility
+  const statsSection = document.querySelector('.stats-strip');
+  if (statsSection) {
+    const statsObserver = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        animateCounters();
+        statsObserver.disconnect();
+      }
+    }, { threshold: 0.3 });
+    statsObserver.observe(statsSection);
+  }
+</script>
+</body>
+</html>
